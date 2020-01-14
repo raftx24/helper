@@ -17,7 +17,7 @@ class API
         $this->initCurl($path, $parameters, $json);
 
         try {
-            $res = $curl->{$method}($this->url($path), $parameters);
+            $res = $this->curl->{$method}($this->url($path), $parameters);
         } catch (Exception $exception) {
             $res = $exception->getMessage();
         }
