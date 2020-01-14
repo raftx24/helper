@@ -1,6 +1,6 @@
 <?php
 
-namespace Raftx24\Helper;
+namespace Raftx24\Helper\App\Services;
 
 use App\Helper\StorageHelper;
 use Curl\Curl;
