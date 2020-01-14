@@ -22,7 +22,7 @@
 	"extra": {
 		"laravel": {
 			"providers": [
-				"Raftx24\\Helper\\ServiceProvider"
+				"Raftx24\\Helper\\AppServiceProvider"
 			]
 		}
 	}
