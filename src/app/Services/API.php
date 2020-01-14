@@ -27,7 +27,7 @@ class API
         return $res;
     }
 
-    protected function log($path, $parameters, string $res)
+    protected function log($path, $parameters, $res)
     {
         StorageHelper::createStorageFolder($this->logFolder);
 
@@ -48,9 +48,9 @@ class API
         return storage_path($fileName);
     }
 
-    protected function content(string $path, $parameters, string $res): string
+    protected function content(string $path, $parameters, $res): string
     {
-        return $path.PHP_EOL
+        return $this->url($path).PHP_EOL
             .$path.'?'.print_r($parameters, true).PHP_EOL
             .json_encode($parameters).PHP_EOL
             .json_encode($res, JSON_PRETTY_PRINT).PHP_EOL;
