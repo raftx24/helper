@@ -1,0 +1,29 @@
+{
+	"name": "raftx24/helper",
+	"description": "a package for calling API",
+	"keywords": ["API", "PHP"],
+	"homepage": "http://github.com/raftx24/helper",
+	"type": "library",
+	"license": "MIT",
+  	"authors": [
+ 	   {
+  	    "name": "Reza Fouladi",
+  	    "email": "raftx24@gmail.com"
+   	   }
+  	],
+  	"autoload": {
+		"psr-4": {
+			"Raftx24\\Helper\\": "src/"
+		}
+  	},
+	"require": {
+		"raftx24/docer": "^1.0"
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Raftx24\\Helper\\SServiceProvider"
+			]
+		}
+	},
+}
