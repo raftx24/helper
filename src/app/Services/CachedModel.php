@@ -11,6 +11,7 @@ namespace Raftx24\Helper\App\Services;
 use Cache;
 use Eloquent;
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -117,5 +118,27 @@ class CachedModel extends Model
             }, []);
 
         Cache::deleteMultiple($keys);
+    }
+
+    public static function __callStatic($method, $parameters)
+    {
+        if (static::isCacheCall($method)) {
+            return static::getCachedTwoLevel(
+                self::methodCachedProp($method), ...$parameters
+            );
+        }
+
+        return parent::__callStatic($method, $parameters);
+    }
+
+    private static function isCacheCall($method): bool
+    {
+        return Str::startsWith($method, 'getCache')
+            && in_array(self::methodCachedProp($method), static::$cachedProps);
+    }
+
+    private static function methodCachedProp($method): string
+    {
+        return Str::snake(str_replace('getCache', '', $method));
     }
 }
