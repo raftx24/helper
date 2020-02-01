@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: reza
- * Date: 8/11/18
- * Time: 12:11 PM
- */
 
 namespace Raftx24\Helper\App\Services;
 
