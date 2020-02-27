@@ -57,6 +57,9 @@ class CachedModel extends Model
         self::$cached[static::class][$prop][$value] = $obj;
     }
 
+    /**
+     * @return static
+     */
     public static function getCached($prop, $value)
     {
         if(! in_array($prop, static::$cachedProps)) {
@@ -70,6 +73,9 @@ class CachedModel extends Model
             self::$cached[static::class][$prop][$value] ?? self::where($prop, "=", $value)->first();
     }
 
+    /**
+     * @return static
+     */
     public static function getCachedTwoLevel($prop, $value, $timeout = 60)
     {
         if(! in_array($prop, static::$cachedProps)) {
@@ -86,11 +92,17 @@ class CachedModel extends Model
         return self::$cached[static::class][$prop][$value];
     }
 
+    /**
+     * @return static
+     */
     public static function getCacheId($id, $timeout=86400)
     {
         return self::getCachedTwoLevel('id', $id, $timeout);
     }
 
+    /**
+     * @return static
+     */
     private static function externalCache($prop, $value, $timeout)
     {
         $externalCacheKey = static::class.'#'.$prop.'#'.$value;
