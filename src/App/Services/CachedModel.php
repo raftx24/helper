@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|CachedModel newModelQuery()
  * @method static Builder|CachedModel newQuery()
  * @method static Builder|CachedModel query()
+ * @method static static getCacheCode()
+ * @method static static getCacheName()
  */
 class CachedModel extends Model
 {
