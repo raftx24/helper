@@ -14,8 +14,8 @@ class Performance
     public function handle($request, Closure $next, $guard = null)
     {
         return env('MIDDLEWARE_PERFORMANCE', false)
-            ? $next($request)
-            : $this->performance($request, $next);
+            ? $this->performance($request, $next)
+            : $next($request);
     }
 
     private function performance($request, Closure $next)
@@ -39,7 +39,7 @@ class Performance
 
     private function log($request): void
     {
-        Log::debug('/'.$request->path().' at '.$this->time().' with '.$this->memoryUsage(). ' queries: '. $this->queryCount.PHP_EOL);
+        Log::debug('performance: /'.$request->path().' at '.$this->time().' with '.$this->memoryUsage(). ' queries: '. $this->queryCount.PHP_EOL);
     }
 
     private function time()
