@@ -33,8 +33,9 @@ class Performance
     private function memoryUsage(): string
     {
         $memory = (int) (memory_get_peak_usage(false) / 1024 / 1024);
+        $memoryReal = (int) (memory_get_peak_usage(true) / 1024 / 1024);
 
-        return $memory.' MiB';
+        return "$memory , $memoryReal".' MiB';
     }
 
     private function log($request): void
