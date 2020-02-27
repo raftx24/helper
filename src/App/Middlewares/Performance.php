@@ -57,6 +57,8 @@ class Performance
 
     private function listenQueries()
     {
-        DB::listen(fn ($query) => ++$this->queryCount);
+        DB::listen(function ($query) {
+            ++$this->queryCount;
+        });
     }
 }
