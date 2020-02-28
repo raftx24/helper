@@ -2,9 +2,9 @@
 
 namespace Raftx24\Helper\App\Services;
 
-use App\Helper\StorageHelper;
 use Curl\Curl;
 use Illuminate\Support\Str;
+use Raftx24\Helper\App\Helpers\StorageHelper;
 
 class API
 {
