@@ -95,7 +95,7 @@ class CachedModel extends Model
     {
         $externalCacheKey = static::class.'#'.$prop.'#'.$value;
 
-        return Cache::remember($externalCacheKey, $timeout, function () use ($prop, $value) {
+        return Cache::remember($externalCacheKey, now()->addSeconds($timeout), function () use ($prop, $value) {
             return self::where($prop, "=", $value)->first();
         });
     }
