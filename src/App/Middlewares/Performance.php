@@ -13,7 +13,7 @@ class Performance
 
     public function handle($request, Closure $next, $guard = null)
     {
-        return env('MIDDLEWARE_PERFORMANCE', false)
+        return config('raftx24.helper.middleware_performance', false)
             ? $this->performance($request, $next)
             : $next($request);
     }

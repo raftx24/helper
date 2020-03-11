@@ -3,6 +3,7 @@
 namespace Raftx24\Helper\App\Services;
 
 use Curl\Curl;
+use Exception;
 use Illuminate\Support\Str;
 use Raftx24\Helper\App\Helpers\StorageHelper;
 
@@ -12,7 +13,7 @@ class API
     protected $baseUrl = null;
     protected $curl = null;
 
-    protected function request($path, $parameters, $method = 'post', $json = true)
+    protected function request($path, $parameters, $method = 'post', $json = true, $log = false)
     {
         $this->initCurl($path, $parameters, $json);
 
@@ -22,7 +23,9 @@ class API
             $res = $exception->getMessage();
         }
 
-        $this->log($path, $parameters, $res);
+        if ($log) {
+            $this->log($path, $parameters, $res);
+        }
 
         return $res;
     }
